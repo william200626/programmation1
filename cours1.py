@@ -1,1 +1,0 @@
-print( "allo les amis!")
