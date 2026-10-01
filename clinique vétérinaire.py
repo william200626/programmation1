@@ -2,7 +2,7 @@
 #date: 2026-09-17
 #description: TP Clinique vétérinaire
 
-REQUIN_TEMP_MIN = 22.0
+REQUIN_TEMP_MIN = 21.0
 REQUIN_TEMP_MAX = 26.0
 REQUIN_MASSE_MIN = 60.0
 REQUIN_MASSE_MAX = 150.0
@@ -27,6 +27,17 @@ Gnou = 3
 Indice_De_Vitalité = 100
 
 import math
+import datetime
+maintenant = datetime.datetime.now()
+
+from colorama import Fore, Back, Style, init
+
+
+
+
+
+
+
 
 print("----------------INFORMATION SUR LE SPÉCIMEN----------------")
 Nom =str(input("Nom de l'animal : "))
@@ -54,6 +65,7 @@ if (Espece == Requin):
         print(f"Âge                       : {nombre_année} ans et {restant_mois} mois (sénior)")
 
     print("Saisie                    : masse en lbs, température en °F")
+    print (maintenant.strftime("Date                      : %A, %d %B %Y"))
     print("----------------------------------------------------------------------")
     print("mesure                                  valeur    Norme")
     print(f"Température (°C)                         {Température_corporelle_en_celcius:.2f}    {REQUIN_TEMP_MIN}-{REQUIN_TEMP_MAX}")
@@ -74,12 +86,13 @@ if (Espece == Requin):
         Indice_De_Vitalité = Indice_De_Vitalité -20
     print(f"Indice de vitalité : {Indice_De_Vitalité} / 100")
     if( Indice_De_Vitalité < 100 and Indice_De_Vitalité > 50):
-        print("VERDICT : SURVEILLANCE")
+        print(f"VERDICT : {Back.YELLOW}SURVEILLANCE{Style.RESET_ALL}")
     elif( Indice_De_Vitalité == 50):
-        print("VERDICT : URGENCE")
+        print(f"VERDICT : {Back.RED}URGENT{Style.RESET_ALL}")
     else:
-        print("VERDICT : NORMAL")
+        print(f"VERDICT : {Back.GREEN}NORMAL{Style.RESET_ALL}")
     print("======================================================================")
+    print (maintenant.strftime("Bilan produit à: %H:%M"))
 
 
 if (Espece == Tigre):
@@ -89,6 +102,7 @@ if (Espece == Tigre):
     else:
         print(f"Âge                       : {nombre_année} ans et {restant_mois} mois (sénior)")        
 
+    print (maintenant.strftime("Date                      : %A, %d %B %Y"))
     print("Saisie                    : masse en lbs, température en °F")
     print("----------------------------------------------------------------------")
     print("mesure                                  valeur    Norme")
@@ -110,13 +124,13 @@ if (Espece == Tigre):
         Indice_De_Vitalité = Indice_De_Vitalité -20
     print(f"Indice de vitalité : {Indice_De_Vitalité} / 100")
     if( Indice_De_Vitalité < 100 and Indice_De_Vitalité > 50):
-        print("VERDICT : SURVEILLANCE")
+        print(f"VERDICT : {Back.YELLOW}SURVEILLANCE{Style.RESET_ALL}")
     elif( Indice_De_Vitalité == 50):
-        print("VERDICT : URGENCE")
+        print(f"VERDICT : {Back.RED}URGENT{Style.RESET_ALL}")
     else:
-        print("VERDICT : NORMAL")
+        print(f"VERDICT : {Back.GREEN}NORMAL{Style.RESET_ALL}")
     print("======================================================================")
-    
+    print (maintenant.strftime("Bilan produit à: %H:%M"))
 
 
 
@@ -128,6 +142,7 @@ if (Espece == Gnou):
     else:
         print(f"Âge                       : {nombre_année} ans et {restant_mois} mois (sénior)")
 
+    print (maintenant.strftime("Date                      : %A, %d %B %Y"))
     print("Saisie                    : masse en lbs, température en °F")
     print("----------------------------------------------------------------------")
     print("mesure                                  valeur    Norme")
@@ -148,14 +163,14 @@ if (Espece == Gnou):
     if(masse_en_kg > GNOU_MASSE_MAX or masse_en_kg < GNOU_MASSE_MIN):
         Indice_De_Vitalité = Indice_De_Vitalité -20
     print(f"Indice de vitalité : {Indice_De_Vitalité} / 100")
-    if( Indice_De_Vitalité < 100 and Indice_De_Vitalité > 50):
-        print("VERDICT : SURVEILLANCE")
-    elif( Indice_De_Vitalité == 50):
-        print("VERDICT : URGENCE")
+    if( Indice_De_Vitalité < 100 and Indice_De_Vitalité > 50 and not masse_en_kg > GNOU_MASSE_MAX or masse_en_kg < GNOU_MASSE_MIN):
+        print(f"VERDICT : {Back.YELLOW}SURVEILLANCE{Style.RESET_ALL}")
+    elif( Indice_De_Vitalité == 50 or masse_en_kg > GNOU_MASSE_MAX or masse_en_kg < GNOU_MASSE_MIN):
+        print(f"VERDICT : {Back.RED}URGENT{Style.RESET_ALL}")
     else:
-        print("VERDICT : NORMAL")
-    print("======================================================================")
-
+        print(f"VERDICT : {Back.GREEN}NORMAL{Style.RESET_ALL}")
+    print("======================================================================")    
+    print (maintenant.strftime("Bilan produit à: %H:%M"))
 
 
 if (Espece > 3):
