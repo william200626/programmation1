@@ -1,4 +1,4 @@
-# auteur: William Levasseur LAfrenière 
+# auteur: William Levasseur Lafrenière 
 #date: 2026-09-17
 #description: TP Clinique vétérinaire
 
