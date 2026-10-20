@@ -56,7 +56,7 @@ valeurs_trier = sorted(valeurs)
 print(valeurs)
 print(valeurs_trier)
 
-
+valeurs_trier.sort(reverse=True)
 
 
 
