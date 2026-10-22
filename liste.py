@@ -50,13 +50,13 @@
 
 #-----------------------------------------------
 
-valeurs = [10,20,44,22,11,35]
-# valeurs.sort()
-valeurs_trier = sorted(valeurs)
-print(valeurs)
-print(valeurs_trier)
+# valeurs = [10,20,44,22,11,35]
+# # valeurs.sort()
+# valeurs_trier = sorted(valeurs)
+# print(valeurs)
+# print(valeurs_trier)
 
-valeurs_trier.sort(reverse=True)
+# valeurs_trier.sort(reverse=True)
 
 
 
@@ -67,6 +67,62 @@ valeurs_trier.sort(reverse=True)
 # print(min(poules))
 # print(len(poules))
 # print(poules.count(10))
+
+
+
+#=================================================
+#on reparle des listes
+
+
+# avions.append("d")
+# avions.insert(0,"a")
+
+# print(avions[0])
+# print(avions[1])
+# print(avions[1:3])
+# print(avions[-1])
+
+
+
+# avion = avions.pop(0)
+
+# for avion in avions:
+#     print (avion)
+
+# for i in range(len(avions)):
+#     print(avions[i])
+
+# if "e" in avions:
+#     print("youhou")
+# else:
+#     print("bouh")
+
+
+# while "e"not in avions:
+#     ...
+
+# ************************************************
+avions = ["a", "b", "c", "d"]
+
+
+valide = False
+while valide == False:
+    valeur_avion = input("bojour c quoi ton avion")
+    if valeur_avion in avions:
+        avions.remove(valeur_avion)
+    valide == True
+    
+else:
+    print("existe pas")
+
+
+    
+print(avions)
+
+
+
+
+
 
 
 
