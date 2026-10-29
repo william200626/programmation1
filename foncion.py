@@ -40,12 +40,18 @@ def obtenir_nombre_de_carre(nombre_minimal, nombre_maximal,type_nombre="nombre")
         except ValueError:
             print("Ce n'est pas un nombre entier.")
 
+#triangle
+def afficher_triangle(largeur, motif="*"):
+    for i in range(largeur,0 -1):
+        print(motif * i) 
+
 
 ############################ prog principal ##############################
 
 nombre_carre = obtenir_nombre_de_carre(1,10, "un nombre")
 for i in range(1,nombre_carre+1):
     afficher_carre(i)
+
 
 
 # for i in range(1,5):
