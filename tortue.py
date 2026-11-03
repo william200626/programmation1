@@ -40,6 +40,9 @@ print(f"PLus petite carapace : {(min(liste_tortues))}")
 print(f"Plus grande carapace : {(max(liste_tortues))}")
 liste_tortues.sort(reverse=True)
 print(f"De la plus grande à la plus petite : {liste_tortues}")
+print(f"plus grande {liste_tortues[0:3]}")
+
+print(f"Longueur moyenne {sum(liste_tortues) / Nombre_de_tortue:.2f}")
 
 
 
