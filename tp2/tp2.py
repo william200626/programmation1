@@ -42,16 +42,20 @@ def construire_liste(option_mode):
 
     return liste_lieu, liste_reponce        
 
+def menu_fonction(LIGNE):
+    print(f"/{LIGNE:-<76}\\")
+    print(f"|{"Jeu questionnaire - Les capitales":^76}|")
+    print(f"|{"réalisé par William Levasseur Lafrenière":^76}|")
+    print(f"\\{LIGNE:-<76}/")
+    print("")
+
+
 # example = construire_liste(1)
 
 #-----------------------------------------
 # programme principal
 #Tableau
-print(f"/{LIGNE:-<76}\\")
-print(f"|{"Jeu questionnaire - Les capitales":^76}|")
-print(f"|{"réalisé par William Levasseur Lafrenière":^76}|")
-print(f"\\{LIGNE:-<76}/")
-print("")
+menu = menu_fonction(LIGNE="")
 
 nom = lire_texte("Votre nom:")
 print("")
@@ -176,6 +180,10 @@ while not valide:
             print("Erreur : répondez par o ou n.")
     except ValueError:
         print("Ce n'est pas un nombre entier.")
+
+
+
+
 
 #-----------------------------------------
 

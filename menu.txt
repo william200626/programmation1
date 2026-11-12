@@ -1,0 +1,4 @@
+valeur de i: 1
+valeur de i: 2
+valeur de i: 3
+valeur de i: 4
