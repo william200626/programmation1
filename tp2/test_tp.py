@@ -51,16 +51,16 @@ def menu_fonction(LIGNE):
 
 
 # example = construire_liste(1)
-k = 0
+
 #-----------------------------------------
 # programme principal
-
 #Tableau
 menu = menu_fonction(LIGNE="")
 
 nom = lire_texte("Votre nom:")
 print("")
 
+k = 0
 while k == 0:
     #Choisir mode
     print("MONDE DE JEU")
@@ -124,19 +124,6 @@ while k == 0:
             liste_mauvaise_reponse.append(reponce)
             liste_bonne_reponse.append(liste_capitales[valeur_aleatoire])
             liste_lieu.append(liste_lieux[valeur_aleatoire])
-        # for i in range(Nb_question):
-        #     valeur_aleatoire = random.randrange(0,len(PAYS + ETATS + PROVINCES))
-        #     liste_valeur_aleatoire = random.sample(range(0, len(PAYS + ETATS + PROVINCES)), Nb_question)
-        #     print(f"Question {i+1} de {Nb_question} - {(PAYS + ETATS + PROVINCES)[valeur_aleatoire]}")
-        #     reponce=str(input("Capitale : "))
-        #     if reponce == (CAPITALES_PAYS + CAPITALES_ETATS + CAPITALES_PROVINCES)[valeur_aleatoire]:
-        #         j += 1
-        #     if reponce == (CAPITALES_PAYS + CAPITALES_ETATS + CAPITALES_PROVINCES)[valeur_aleatoire]:
-        #         print(f"Bonne réponce! Pointage : {j+1}/{i+1}")
-        #     else:
-        #         erreur += 1
-        #         print(f"Mauvaise réponce. On cherchait : {(CAPITALES_PAYS + CAPITALES_ETATS + CAPITALES_PROVINCES)[valeur_aleatoire]}. Pointage : {j}/{i+1}")
-
 
 
     #pointage
@@ -160,15 +147,15 @@ while k == 0:
     #réviser
     print(f"{"À RÉVISER":^78}")
     print(f"{LIGNE:-<78}")
-    print(f"Lieu {" | Votre réponce   |":>46}")
+    print(f"Lieu {"| Votre réponce   |":>46}")
     print(f"{LIGNE:-<78}")
     for i in range(erreur):
-        print(f"{liste_lieu[0]:<31}  | {liste_mauvaise_reponse[0]:<15} | {liste_bonne_reponse[0]}")
+        print(f"{liste_lieu[0]:<31} | {liste_mauvaise_reponse[0]:<15} | {liste_bonne_reponse[0]}")
         liste_mauvaise_reponse.pop(0)
         liste_bonne_reponse.pop(0)
         liste_lieu.pop(0)
 
-    
+
     # Recette — Valider l'appartenance à un ensemble de valeurs
     choix_valides = ("o", "n")
 
@@ -179,12 +166,11 @@ while k == 0:
             if choix in choix_valides:
                 valide = True
             else:
-                print("Erreur : répondez par o ou n.")
+                print(f"{Fore.RED}Erreur : répondez par o ou n.{Style.RESET_ALL}")
         except ValueError:
-            print("Ce n'est pas un nombre entier.")
-    if choix == "n":
-        k +=1
-
+            print(f"{Fore.RED}Ce n'est pas un nombre entier.{Style.RESET_ALL}")
+        if choix == "n":
+            k +=1
 
 
 
