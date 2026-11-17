@@ -1,5 +1,5 @@
-# auteur: William Levasseur Lafrenière 
-#date: 2026-22-17
+#auteur: William Levasseur Lafrenière 
+#date: 2026-11-17
 #description: tp2
 
 #-----------------------------------------
@@ -13,16 +13,9 @@ from donnees_tp2 import CAPITALES_ETATS, CAPITALES_PAYS, CAPITALES_PROVINCES, PA
 random.seed(1000)
 #-----------------------------------------
 # constantes
-
 LIGNE = ""
-
-
-
-
 #-----------------------------------------
 #fonction
-
-
 
 # Recette — Valider une chaîne non vide
 def lire_texte(message):
@@ -42,11 +35,11 @@ def construire_liste(option_mode):
 
     return liste_lieu, liste_reponce        
 
-def menu_fonction(LIGNE):
-    print(f"/{LIGNE:-<76}\\")
+def afficher_bienvenue():
+    print(f"/{"":-<76}\\")
     print(f"|{"Jeu questionnaire - Les capitales":^76}|")
     print(f"|{"réalisé par William Levasseur Lafrenière":^76}|")
-    print(f"\\{LIGNE:-<76}/")
+    print(f"\\{"":-<76}/")
     print("")
 
 
@@ -55,20 +48,25 @@ def menu_fonction(LIGNE):
 #-----------------------------------------
 # programme principal
 #Tableau
-menu = menu_fonction(LIGNE="")
+afficher_bienvenue()
 
+#demande de nom
 nom = lire_texte("Votre nom:")
 print("")
+
+#liste a remplir
 liste_pourcent = []
 liste_mode = []
 liste_difficulter = []
 liste_resultat = []
+
+#choix mode de jeux
 nb_partie = 1
 k = 0
 while k == 0:
     #Choisir mode
     print("MONDE DE JEU")
-    print("  1 - Srandart (196 pays du monde)\n  2 - Aventure (259 lieux : pays + provinces et territoires du Canada + États américans)")
+    print("  1 - Standart (196 pays du monde)\n  2 - Aventure (259 lieux : pays + provinces et territoires du Canada + États américans)")
     valide = False
     while not valide:
         try:
@@ -80,6 +78,7 @@ while k == 0:
                 print(f"{Fore.RED}Erreur : entrez un nombre entre 1 et 2.{Style.RESET_ALL}")
         except ValueError:
             print(f"{Fore.RED}Ce n'est pas un nombre entier.{Style.RESET_ALL}")
+    print(LIGNE)
 
     #Choisir difficulté
     print("NIVEAU DE DIFFICULTÉ")
@@ -95,7 +94,7 @@ while k == 0:
                 print(f"{Fore.RED}Erreur : entrez un nombre entre 1, 2 et 3.{Style.RESET_ALL}")
         except ValueError:
             print(f"{Fore.RED}Ce n'est pas un nombre entier.{Style.RESET_ALL}")
-
+    print(LIGNE)
     if Choix_difficulte == 1:
         Nb_question = 5
     elif Choix_difficulte == 2:
@@ -103,17 +102,13 @@ while k == 0:
     else:
         Nb_question = 15
 
-
-    #questionaire
+    #liste a remplir
     liste_bonne_reponse = []
     liste_mauvaise_reponse = []
     liste_lieu = []
-   
-
-
     liste_lieux, liste_capitales = construire_liste(Choix_mode)
 
-
+    #questionaire
     j = 0
     erreur = 0
     for i in range(Nb_question):
@@ -125,9 +120,11 @@ while k == 0:
             j += 1
         if reponce == liste_capitales[valeur_aleatoire]:
             print(f"{Fore.GREEN}Bonne réponce! Pointage : {j}/{i+1}{Style.RESET_ALL}")
+            print(LIGNE)
         else:
             erreur += 1
             print(f"{Fore.RED}Mauvaise réponce. On cherchait : {liste_capitales[valeur_aleatoire]}. Pointage : {j}/{i+1}{Style.RESET_ALL}")
+            print(LIGNE)
             liste_mauvaise_reponse.append(reponce)
             liste_bonne_reponse.append(liste_capitales[valeur_aleatoire])
             liste_lieu.append(liste_lieux[valeur_aleatoire])
@@ -137,7 +134,7 @@ while k == 0:
     print(f"{LIGNE:*<78}")
     print(F"{nom}, votre pointage est de {j} sur {i+1} ({j * 100 // i} %).")
     liste_resultat.append(j)
-    liste_pourcent.append(j * 100 // i)
+    liste_pourcent.append(i+1)
     #calcul pourcentage
     if j * 100 / i > 99:
         print("Parfait! Un vrai globe-trotter!")
@@ -151,18 +148,25 @@ while k == 0:
         print("Il est temps de sortir l'atlas!")
     print(LIGNE)
 
+
+
+    #réviser mauvaise réponce
     print(f"{LIGNE:*<78}")
-    #réviser
     print(f"{"À RÉVISER":^78}")
     print(f"{LIGNE:-<78}")
-    print(f"Lieu {"| Votre réponce   |":>46}")
-    print(f"{LIGNE:-<78}")
-    for i in range(erreur):
-        print(f"{liste_lieu[0]:<31} | {liste_mauvaise_reponse[0]:<15} | {liste_bonne_reponse[0]}")
-        liste_mauvaise_reponse.pop(0)
-        liste_bonne_reponse.pop(0)
-        liste_lieu.pop(0)
+    print(LIGNE)
+    if j / i == 1:
+        print(f"{Fore.RED}Aucune erreur : rien à réviser!{Style.RESET_ALL}")
+    else:
 
+        print(f"Lieu {"| Votre réponce   |":>46}")
+        print(f"{LIGNE:-<78}")
+        for i in range(erreur):
+            print(f"{liste_lieu[0]:<31} | {liste_mauvaise_reponse[0]:<15} | {liste_bonne_reponse[0]}")
+            liste_mauvaise_reponse.pop(0)
+            liste_bonne_reponse.pop(0)
+            liste_lieu.pop(0)
+    print(LIGNE)
 
     # Recette — Valider l'appartenance à un ensemble de valeurs
     choix_valides = ("o", "n")
@@ -181,23 +185,44 @@ while k == 0:
             k +=1
         else:
             nb_partie += 1
+    print(LIGNE)
 
 
 
 
-
+#historique de session
+meilleur_resultat = 0
+partie = 1
 print(f"{LIGNE:=<78}")
 print(f"{"HISTORIQUE DE LA SESSION":^78}")
 print(f"{LIGNE:=<78}")
 print("Partie | Mode     | Niveau | Résultat | Réussite")
 print(f"{LIGNE:-<78}")
 for i in range(nb_partie):
-    print(f"{i+1:<6} | {liste_mode[0]:<8} | {liste_difficulter[0]:<6} | {liste_resultat[0]:<6} | {liste_pourcent[0]:<6} {Choix_difficulte * 5} %")
-    liste_difficulter.pop(0)
-    liste_mode.pop(0)
-    liste_resultat.pop(0)
-    liste_pourcent.pop(0)
-#-----------------------------------------
+    if liste_difficulter[i] == 1:
+        Niveau = "Facile"
+    elif liste_difficulter[i] == 2:
+        Niveau = "Normal"
+    else:
+        Niveau = "Avancé"
+    
+    if liste_mode[i] == 1:
+        mode = "Standart"
+    else:
+        mode = "Aventure"
+
+    resultat = liste_resultat[i]
+    pourcentage = liste_pourcent[i]
+
+    print(f"{i+1:<6} | {mode:<8} | {Niveau:<6} | {resultat:>4} / {pourcentage} | {resultat*100//pourcentage} %")
+
+    while resultat*100//pourcentage > meilleur_resultat:
+        meilleur_resultat = resultat*100//pourcentage
+        partie = i
+print(f"{LIGNE:=<78}")
+print(f"Meilleur partie : partie {partie} ({meilleur_resultat}%)")
+print(F"Merci d'avoir jouer, {nom}!")
+
 
 
 
