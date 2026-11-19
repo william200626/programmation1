@@ -156,7 +156,7 @@ while k == 0:
     print(f"{LIGNE:-<78}")
     print(LIGNE)
     if j / i == 1:
-        print(f"{Fore.RED}Aucune erreur : rien à réviser!{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}Aucune erreur : rien à réviser!{Style.RESET_ALL}")
     else:
 
         print(f"Lieu {"| Votre réponce   |":>46}")
